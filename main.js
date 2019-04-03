@@ -1,15 +1,27 @@
 let canvas = document.getElementById('main');
 let c = canvas.getContext('2d');
 
+canvas.width = window.innerWidth;
+canvas.height= window.innerHeight;
+
+let pos = new Vector (60,60);
+let vel = new Vector (.5, .2);
 function init() {
-alert("hello world");
-c.fillStyle= "red";
-c.fillRect(50,50,100,100);
+    console.log(pos.toString());
+
+
     update();
 }
 
 function update() {
+    c.clearRect(0,0,canvas.width, canvas.height);
 
+    pos.addVector(vel);
+
+    c.beginPath();
+    c.arc(pos.x,pos.y, 50, Math.PI * 2, false);
+    c.closePath();
+    c.stroke();
 
     requestAnimationFrame(update);
 }
@@ -17,3 +29,4 @@ function update() {
 window.addEventListener('load', function(event) {
     init();
 });
+;
