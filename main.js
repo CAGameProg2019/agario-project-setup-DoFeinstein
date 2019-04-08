@@ -22,11 +22,12 @@ function randomColor(){
 }
 
 function init() {
+
+for (var i = 0; i < 100; i++) {
     let x = Math.random() * canvas.width;
     let y = Math.random() * canvas.height;
     let color = randomColor();
-for (var i = 0; i < 100; i++) {
-    foods.push(new Food(x, y, 20, color));
+    foods.push(new Food(x, y, 10, color));
 
 
 }
@@ -37,7 +38,7 @@ function update() {
     c.clearRect(0,0,canvas.width, canvas.height);
     for (var i = 0; i < foods.length; i++) {
 
-        foods[i].update();
+        foods[i].draw(c);
     }
 
 
