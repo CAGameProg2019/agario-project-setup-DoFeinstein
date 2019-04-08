@@ -15,11 +15,11 @@ class Vector {
     subVector(vec){
         this.x -= vec.x;
         this.y -= vec.y;
-        
+
     }
     scale(s){
         this.x *= s;
-        this.y *= s ;
+        this.y *= s;
     }
 
     toString(){
