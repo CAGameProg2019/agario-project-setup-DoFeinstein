@@ -11,7 +11,29 @@ class Food extends Vector {
         c.beginPath();
         c.arc(this.x,this.y,this.radius, 0, Math.PI*2, false);
         c.closePath();
+        c.lineWidth = 5;
+        c.stroke();
         c.fill();
+    }
+
+    intersects(food) {
+        let distance = this.dist(food);
+        if(distance <= this.radius + food.radius){
+            return true;
+        }
+        return false;
+    }
+
+    get mass() {
+        return Math.PI * this.radius * this.radius;
+    }
+
+    set mass(newmass){
+        this.radius = Math.sqrt(newmass / Math.PI);
+    }
+
+    addMass(m) {
+        this.mass += m;
     }
 
 }
