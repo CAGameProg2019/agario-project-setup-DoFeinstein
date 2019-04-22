@@ -19,6 +19,13 @@ let colors = [
     '#E22450'
 
 ];
+let strokeColors = [
+    '#016F7D',
+    '#B0A376',
+    '#CC9A12',
+    '#BD6213',
+    '#B01C3F'
+];
 
 function randomColor(){
     let index =Math.floor(Math.random() * colors.length);
@@ -34,10 +41,14 @@ function generateFood() {
 }
 
 function init() {
-
     mpos = new Vector(canvas.width/2, canvas.height/2);
+    let name = prompt("Input Username: ");
 
-    player = new Player(canvas.width/2, canvas.height/2, 25, randomColor(), "red");
+    let color = randomColor();
+    let stroke = strokeColors[colors.indexOf(color)];
+
+
+    player = new Player(canvas.width/2, canvas.height/2, 25, color, stroke, name, 4);
 
 
     for (var i = 0; i < FOOD_COUNT; i++) {
@@ -67,8 +78,10 @@ function update() {
     }
 
     player.draw(c);
-    player.x = mpos.x;
-    player.y = mpos.y;
+    player.update(mpos)
+
+
+
 
 
     requestAnimationFrame(update);
