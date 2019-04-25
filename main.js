@@ -42,7 +42,7 @@ function generateFood() {
 
 function init() {
     mpos = new Vector(canvas.width/2, canvas.height/2);
-    let name = prompt("Input Username: ");
+    let name = prompt("Press space to speed up, r to shrink, c to change color. Input Username: ");
 
     let color = randomColor();
     let stroke = strokeColors[colors.indexOf(color)];
@@ -80,6 +80,7 @@ function update() {
         generateFood();
     }
 
+
     player.draw(c);
     player.update(mpos)
 
@@ -100,12 +101,26 @@ window.addEventListener('load', function(event) {
     });
     window.addEventListener('keydown', function(event){
         if(event.key ==" "){
-            player.maxSpeed = 6
+            player.maxSpeed = 7
         }
     });
     window.addEventListener('keyup', function(event){
         if(event.key ==" "){
             player.maxSpeed = 4
+        }
+    });
+    window.addEventListener('keydown', function(event){
+        if(event.key =="r"){
+            player.radius = player.radius/2
+        }
+    });
+    window.addEventListener('keydown', function(event){
+        if(event.key =="c"){
+            let color = randomColor();
+            let stroke = strokeColors[colors.indexOf(color)];
+            player.color = color;
+
+            player.stroke = stroke;
         }
     });
 });
