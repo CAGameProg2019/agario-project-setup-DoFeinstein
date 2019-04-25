@@ -66,7 +66,10 @@ function update() {
         if (!eaten) {
             foods[i].draw(c);
         } else {
-            player.addMass(foods[i].mass);
+            if (player.mass < 200000) {
+                player.addMass(foods[i].mass);
+            }
+
             foods.splice(i,1);
             i--;
         }
