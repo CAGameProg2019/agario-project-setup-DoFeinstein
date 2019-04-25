@@ -98,4 +98,14 @@ window.addEventListener('load', function(event) {
         mpos.y = event.clientY - canvas.offsetTop;
 
     });
+    window.addEventListener('keydown', function(event){
+        if(event.key ==" "){
+            player.maxSpeed = 6
+        }
+    });
+    window.addEventListener('keyup', function(event){
+        if(event.key ==" "){
+            player.maxSpeed = 4
+        }
+    });
 });
